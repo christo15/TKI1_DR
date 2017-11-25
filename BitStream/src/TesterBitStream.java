@@ -21,13 +21,13 @@ public class TesterBitStream {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner sc = new Scanner(System.in);
-        System.out.print("Masukkan input : ");
+        System.out.print("Masukkan biner : ");
         String bit = sc.next();
         Bitstream bitStream = new Bitstream();
         int result = bitStream.getDecimal(bit);
         System.out.println(result);
         System.out.println();
-        System.out.println("Dikembalikan ke bentuk bit");
+        System.out.println("Dikembalikan ke bentuk biner");
         System.out.println(bitStream.getBit(result));
     }
 }

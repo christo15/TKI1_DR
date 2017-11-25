@@ -11,28 +11,28 @@
  * 
  */
 public class Bitstream {
-    public int getDecimal(String bit) {
-        int length = bit.length();
-        int result = 0;
+    public int getDecimal(String biner) {
+        int length = biner.length();
+        int decimal = 0;
         for(int i = 0;i<length;i++) {
-            char temp = bit.charAt((length-1)-i);
+            char temp = biner.charAt((length-1)-i);
             if(temp == '1') {
-                result += (int) Math.pow(2, i);
+                decimal += (int) Math.pow(2, i);
             }
         }
-        return result;
+        return decimal;
     }
     
     public String getBit(int decimal) {
-        StringBuilder result = new StringBuilder();
+        StringBuilder biner = new StringBuilder();
         int temp = decimal;
         
         while(temp != 1) {
             int bit = temp%2;
-            temp = temp / 2;
-            result.append(bit);
+            temp /= 2;
+            biner.append(bit);
         }
-        result.append(temp);
-        return result.toString();
+        biner.append(temp);
+        return biner.toString();
     }
 }
