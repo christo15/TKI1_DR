@@ -20,11 +20,14 @@ public class TesterTries {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Text input : ");
-        String input = sc.next();
+        String term = sc.next();
         System.out.print("Frekuensi : ");
-        int data = sc.nextInt();
+        int frekuensi = sc.nextInt();
+        System.out.print("Id Dokumen : ");
+        String idDoc = sc.next();
         Trie tri = new Trie();
-        tri.putString(input,data);
-        System.out.println(tri.getValue(input));
+        tri.putString(term,frekuensi,idDoc);
+        System.out.println("Frekuensi dari term " + term + " : " + Trie.getValue(term));
+        System.out.println("Id Dokumen dari term " + term + " : " + Trie.getDocId(term));
     }
 }

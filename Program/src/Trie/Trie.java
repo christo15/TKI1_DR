@@ -15,27 +15,36 @@ public class Trie {
         root = new NodeTrie();
     }
 
-    public static void putString(String input, int data) {
+    public static void putString(String term, int frekuensi, String docId) {
         NodeTrie tempNode = root;
-        for(int a = 0; a<input.length();a++) {
-            String temp = input.charAt(a)+"";
+        for(int a = 0; a<term.length();a++) {
+            String temp = term.charAt(a)+"";
             int num = getNum(temp);
             tempNode = tempNode.getNext(num);
         }
-        tempNode.setData(data);
+        tempNode.setData(frekuensi, docId);
     }
 
-    public static int getValue(String input) {
+    public static int getValue(String term) {
         NodeTrie tempNode =root;
-        for(int a = 0; a<input.length();a++) {
-            String temp = input.charAt(a)+"";
+        for(int a = 0; a<term.length();a++) {
+            String temp = term.charAt(a)+"";
             int num = getNum(temp);
             tempNode = tempNode.getNext(num);
         }
-        return tempNode.getData();
+        return tempNode.getFrekuensi();
     }
 
-
+    public static String getDocId(String term) {
+        NodeTrie tempNode =root;
+        for(int a = 0; a<term.length();a++) {
+            String temp = term.charAt(a)+"";
+            int num = getNum(temp);
+            tempNode = tempNode.getNext(num);
+        }
+        return tempNode.getDocId();
+    }
+    
     public static int getNum(String input) {
         int number = 0;
         switch(input.toLowerCase()) {
