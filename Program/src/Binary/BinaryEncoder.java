@@ -43,9 +43,10 @@ public class BinaryEncoder {
     
     private int getDecimal(byte[] bit, int jumlahBit) {
         int decimal = 0;
+        int pangkat = jumlahBit-1;
         for(int i = 0;i<jumlahBit;i++) {
             if(bit[i] == 1) {
-                decimal += (int) Math.pow(2, jumlahBit-i);
+                decimal += (int) Math.pow(2, pangkat-i);
             }
         }
         return decimal;
