@@ -23,8 +23,8 @@ public class Parser {
     public Term[] parseDoc() throws IOException {
         File[] file = Dokumen.readDocuments();
         Term[] term = new Term[file.length];
-        for(int i = 0;i<term.length;i++) {
-            term[i] = new Term(file[i]);
+        for(int i = 0;i<20;i++) {
+            term[i] = new Term(file[i], i+1);
         }
         return term;
     }

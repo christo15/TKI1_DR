@@ -22,14 +22,14 @@ import java.util.HashMap;
  */
 public class Term {
     private String resultParse;
-    private String idDoc;
+    private int idDoc; //mungkin ada bagusnya pake string tapi untuk sekarang pake int dulu
     
-    public Term(File file) throws IOException {
+    public Term(File file, int idDoc) throws IOException {
         this.resultParse = parse(read(file));
-        this.idDoc = file.getName();
+        this.idDoc = idDoc;
     }
     
-    public String getIdDoc() {
+    public int getIdDoc() {
         return this.idDoc;
     }
     
