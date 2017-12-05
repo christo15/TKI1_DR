@@ -29,13 +29,13 @@ public class BinaryEncoder {
     
     private void makeBit(int value) {
         int temp = value;
-        int i = 0;
+        int i = this.stream.length-1;
         
         while(temp != 1) {
             int bit = temp%2;
             this.stream[i] = (byte) bit;
             temp /= 2;
-            i++;
+            i--;
         }
         
         this.stream[i] = (byte) temp;
@@ -49,5 +49,13 @@ public class BinaryEncoder {
             }
         }
         return decimal;
+    }
+    
+    public String print() {
+        StringBuilder print = new StringBuilder();
+        for(int i = 0;i<this.stream.length;i++) {
+            print.append(this.stream[i]);
+        }
+        return print.toString();
     }
 }
