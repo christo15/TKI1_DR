@@ -18,37 +18,52 @@ import java.util.ArrayList;
 public class PostingList {
     private int nDokumen;
     private ArrayList<PostingListEntry> postingListEntry;
+    private String result;
     
-    public PostingList() {
+    public PostingList(String input) {
         this.postingListEntry = new ArrayList<>();
+        postingList(input);
     }
     
-    public String postingList(String input) {
+    public int getDokumen() {
+        return this.nDokumen;
+    }
+    
+    public ArrayList<PostingListEntry> getPostingListEntry() {
+        return this.postingListEntry;
+    }
+    
+    public String getResult() {
+        return this.result;
+    }
+    
+    private void postingList(String input) {
         StringBuilder result = new StringBuilder();
+        String[] temp = input.split(" ");
         int i = 0;
-        this.nDokumen = input.charAt(i);
+        this.nDokumen = Integer.parseInt(temp[i]);
         i++;
-        int temp = this.nDokumen;
-        result.append(this.nDokumen);
-        while(temp != 0) {
-            int frek = input.charAt(i);
+        int nDokumen = this.nDokumen; //disimpan supaya nDokumen tidak hilang
+        result.append(this.nDokumen).append(" ");
+        while(nDokumen != 0) {
+            int frek = Integer.parseInt(temp[i]);
             i++;
-            temp--;
-            int lengthDocId = input.charAt(i);
+            int lengthDocId = Integer.parseInt(temp[i]);
             i++;
-            temp--;
-            result.append(frek).append(lengthDocId);
+            result.append(frek).append(" ").append(lengthDocId).append(" ");
             int[] docId = new int[lengthDocId];
             for(int j = 0;j<lengthDocId;j++) {
-                result.append(input.charAt(i));
-                docId[j] = input.charAt(i);
+                int tempDocId = Integer.parseInt(temp[i]);
+                result.append(tempDocId).append(" ");
+                docId[j] = tempDocId;
                 i++;
-                temp--;
+                nDokumen--;
             }
             PostingListEntry temp1 = new PostingListEntry(frek, lengthDocId, docId);
             this.postingListEntry.add(temp1);
         }
-        return result.toString();
+        this.result = result.toString();
+        //return result.toString();
     }
     
     public void dGap() {
@@ -86,7 +101,7 @@ public class PostingList {
                 this.postingListEntry.get(i).setDocId(postListEntry);
             }
             else if(postListEntry.length>2) {
-                for(int j = 0;j<postListEntry.length-1;j--) {
+                for(int j = 0;j<postListEntry.length-1;j++) {
                     int temp1 = postListEntry[j];
                     int temp2 = postListEntry[j+1];
                     temp2 = temp1 + temp2;

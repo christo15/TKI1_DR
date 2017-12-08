@@ -1,6 +1,7 @@
 package Trie;
 
 
+import Splitting.Term;
 import java.util.Scanner;
 
 /*
@@ -24,10 +25,11 @@ public class TesterTries {
         System.out.print("Frekuensi : ");
         int frekuensi = sc.nextInt();
         System.out.print("Id Dokumen : ");
-        String idDoc = sc.next();
+        int idDoc = sc.nextInt();
         Trie tri = new Trie();
-        tri.putString(term,frekuensi,idDoc);
+        Term data = new Term(term, frekuensi, idDoc);
+        tri.putString(data);
         System.out.println("Frekuensi dari term " + term + " : " + Trie.getValue(term));
-        System.out.println("Id Dokumen dari term " + term + " : " + Trie.getDocId(term));
+        //System.out.println("Id Dokumen dari term " + term + " : " + Trie.getDocId(term));
     }
 }

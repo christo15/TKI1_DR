@@ -17,6 +17,10 @@ public class BinaryEncoder {
     //hanya untuk ngetes
     private byte[] stream;
     
+    public byte[] getStream() {
+        return this.stream;
+    }
+    
     public void write(int value, int jumlahBit) {
         this.stream = new byte[jumlahBit];
         makeBit(value);
@@ -31,14 +35,15 @@ public class BinaryEncoder {
         int temp = value;
         int i = this.stream.length-1;
         
-        while(temp != 1) {
-            int bit = temp%2;
-            this.stream[i] = (byte) bit;
-            temp /= 2;
-            i--;
+        if(value != 0) {
+            while(temp != 1) {
+                int bit = temp%2;
+                this.stream[i] = (byte) bit;
+                temp /= 2;
+                i--;
+            }
+            this.stream[i] = (byte) temp;
         }
-        
-        this.stream[i] = (byte) temp;
     }
     
     private int getDecimal(byte[] bit, int jumlahBit) {

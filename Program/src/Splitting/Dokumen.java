@@ -1,6 +1,5 @@
 package Splitting;
 
-
 import java.io.File;
 
 /*
@@ -17,8 +16,6 @@ import java.io.File;
  */
 public class Dokumen {
     public static File[] readDocuments() {
-        //bagian ini harus kalian edit kalo mau coba
-        //edit sesuai dengan tempat kalian menyimpan data filenya
         File folder = new File("D:\\Data\\Rendra\\Kuliah\\Rendra\\Topik Khusus Informatika\\Tugas Akhir\\dataset reuters");
         File[] listOfFiles = folder.listFiles();
         

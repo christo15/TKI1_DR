@@ -17,6 +17,10 @@ public class UnaryEncoder {
     //hanya untuk ngetes
     private byte[] stream;
     
+    public byte[] getStream() {
+        return this.stream;
+    }
+    
     public void write(int value) {
         if(value == 1) {
             this.stream = new byte[value];
@@ -38,9 +42,19 @@ public class UnaryEncoder {
     
     public int read() {
         int value = 0;
-        for(int i = 0;i<this.stream.length;i++) {
-            value += 1;
+        int i = 0;
+        while(this.stream[i] != 0) {
+            value++;
+            i++;
         }
         return value;
+    }
+    
+    public String print() {
+        StringBuilder print = new StringBuilder();
+        for(int i = 0;i<this.stream.length;i++) {
+            print.append(this.stream[i]);
+        }
+        return print.toString();
     }
 }

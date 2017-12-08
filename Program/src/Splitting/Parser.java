@@ -20,12 +20,12 @@ import java.util.logging.Logger;
  * 
  */
 public class Parser {
-    public Term[] parseDoc() throws IOException {
+    public Process[] parseDoc() throws IOException {
         File[] file = Dokumen.readDocuments();
-        Term[] term = new Term[file.length];
-        for(int i = 0;i<20;i++) {
-            term[i] = new Term(file[i], i+1);
+        Process[] process = new Process[file.length];
+        for(int i = 0;i<process.length;i++) {
+            process[i] = new Process(file[i], i+1);
         }
-        return term;
+        return process;
     }
 }

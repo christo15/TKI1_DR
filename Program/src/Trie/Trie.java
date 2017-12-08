@@ -1,5 +1,7 @@
 package Trie;
 
+import Splitting.Term;
+
 
 /**
  * 
@@ -15,27 +17,33 @@ public class Trie {
         root = new NodeTrie();
     }
 
-    public static void putString(String term, int frekuensi, String docId) {
+    public static void putString(Term data) {
         NodeTrie tempNode = root;
-        for(int a = 0; a<term.length();a++) {
-            String temp = term.charAt(a)+"";
+        int length = data.getKata().length();
+        String kata = data.getKata();
+        for(int a = 0; a<length;a++) {
+            String temp = kata.charAt(a)+"";
             int num = getNum(temp);
             tempNode = tempNode.getNext(num);
         }
-        tempNode.setData(frekuensi, docId);
+        tempNode.setData(data);
     }
 
-    public static int getValue(String term) {
+    public static Term getValue(String term) {
         NodeTrie tempNode =root;
         for(int a = 0; a<term.length();a++) {
             String temp = term.charAt(a)+"";
             int num = getNum(temp);
             tempNode = tempNode.getNext(num);
         }
-        return tempNode.getFrekuensi();
+        String kata = tempNode.getKata();
+        int frekuensi = tempNode.getFrekuensi();
+        int docId = tempNode.getDocId();
+        Term data = new Term(kata, frekuensi, docId);
+        return data;
     }
 
-    public static String getDocId(String term) {
+    private static int getDocId(String term) {
         NodeTrie tempNode =root;
         for(int a = 0; a<term.length();a++) {
             String temp = term.charAt(a)+"";

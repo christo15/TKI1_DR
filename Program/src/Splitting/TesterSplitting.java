@@ -69,10 +69,9 @@ public class TesterSplitting {
 //        }
 
         Parser parser = new Parser();
-        Term[] temp = parser.parseDoc();
-        for(int i = 0;i<20;i++) {
-            //System.out.println(temp[i].getResultParse());
-            System.out.println(temp[i].getIdDoc());
+        Process[] temp = parser.parseDoc();
+        for(int i = 0;i<temp.length;i++) {
+            System.out.println(temp[i].print());
         }
     }
 }

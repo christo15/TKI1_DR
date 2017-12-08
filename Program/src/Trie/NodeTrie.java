@@ -1,5 +1,7 @@
 package Trie;
 
+import Splitting.Term;
+
 
 /**
  * 
@@ -9,8 +11,7 @@ package Trie;
  */
 
 public class NodeTrie {
-    private int frekuensi;
-    private String docId;
+    private Term data;
     //atribut frekuensi dan docId nantinya akan ada di objek
     //objek akan dibuat dari kelas yang ada di Splitting
     private NodeTrie[] trieNode;
@@ -20,16 +21,19 @@ public class NodeTrie {
     }
 
     public int getFrekuensi() {
-        return frekuensi;
+        return this.data.getFrekuensi();
     } 
 
-    public String getDocId() {
-        return this.docId;
+    public int getDocId() {
+        return this.data.getIdDoc();
     }
     
-    public void setData(int frekuensi, String docId) {
-        this.frekuensi = frekuensi;
-        this.docId = docId;
+    public String getKata() {
+        return this.data.getKata();
+    }
+    
+    public void setData(Term data) {
+        this.data = data;
     }
 
     public NodeTrie getNext(int input) {
