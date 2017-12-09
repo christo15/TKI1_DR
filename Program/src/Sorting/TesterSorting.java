@@ -24,5 +24,8 @@ public class TesterSorting {
         System.out.println("Sesudah di sort :");
         System.out.println(sort.print(id));
         System.out.println(sort.print(frekuensi));
+        System.out.println();
+        System.out.println("Hasil untuk dimasukkan ke Posting List :");
+        System.out.println(sort.printResult());
     }
 }

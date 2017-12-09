@@ -76,6 +76,32 @@ public class Sorting {
         }
     }
     
+    public String printResult() {
+        StringBuilder print = new StringBuilder();
+        //print.append(this.iD.length).append(" ");
+        int dokumen = 1; //variable untuk menyimpan banyak dokumen dengan frekuensi yang sama
+        
+        for(int i = 0;i<this.iD.length;i++) {
+            int temp1 = this.frequency[i];
+            int temp2 = 0;
+            if(i != this.iD.length-1) {
+                temp2 = this.frequency[i+1];
+            }
+            if(temp1 == temp2) {
+                dokumen++;
+            }
+            else {
+                print.append(temp1).append(" ").append(dokumen).append(" ");
+                for(int j = i-(dokumen-1);j<dokumen+(i-(dokumen-1));j++) {
+                    print.append(this.iD[j]).append(" ");
+                }
+                dokumen = 1;
+            }
+        }
+        
+        return print.toString();
+    }
+    
     public String print(int[] input) {
         StringBuilder print = new StringBuilder();
         
