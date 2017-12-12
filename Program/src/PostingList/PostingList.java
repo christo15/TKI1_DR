@@ -23,7 +23,7 @@ public class PostingList {
 
     public PostingList(String input) {
         this.postingListEntry = new ArrayList<>();
-        postingList(input);
+        postList(input);
         this.nFiles = Dokumen.readDocuments().length;
     }
 
@@ -39,7 +39,7 @@ public class PostingList {
         return this.result;
     }
 
-    private void postingList(String input) {
+    private void postList(String input) {
         StringBuilder result = new StringBuilder();
         String[] temp = input.split(" ");
         int i = 0;
@@ -113,9 +113,10 @@ public class PostingList {
     }
     
     public double getIDF() {
-        double pembilang = Math.log10(this.nFiles/this.nDokumen);
-        double penyebut = Math.log10(2.0);
-        return pembilang/penyebut;
+        //double pembilang = Math.log10(this.nFiles/this.nDokumen);
+        //double penyebut = Math.log10(2.0);
+        //return pembilang/penyebut;
+        return (this.nFiles*1.0)/2;
     }
 
     public String print() {

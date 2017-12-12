@@ -40,8 +40,9 @@ public class PostingListEntry {
     }
     
     public double getTF() {
-        double pembilang = Math.log10(this.frek);
-        double penyebut = Math.log10(2.0);
-        return pembilang/penyebut;
+//        double pembilang = Math.log10(this.frek);
+//        double penyebut = Math.log10(2.0);
+//        return pembilang/penyebut;
+        return this.frek;
     }
 }
