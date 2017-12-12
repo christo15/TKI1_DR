@@ -18,6 +18,7 @@ public class Sorting {
     public Sorting(int[] iD, int[] frequency) {
         this.frequency = frequency;
         this.iD = iD;
+        sort();
     }
     
     public int[] getFrequency() {
@@ -28,24 +29,7 @@ public class Sorting {
         return this.iD;
     } 
 
-    public void sort() {
-//        for(int i=0;i<this.iD.length;i++) {
-//            int temp = iD[i];
-//            for(int a = i;a>0;a--) {
-//                if(temp<this.iD[a-1]) {
-//                    int temp2 = this.iD[a-1];
-//                    this.iD[a-1] = temp;
-//                    this.iD[a] = temp2;
-//                    temp = this.iD[a-1];
-//
-//                    int tempFa1 = this.frequency[a];
-//                    int tempFa2 = this.frequency[a--];
-//                    this.frequency[a] = tempFa2;
-//                    this.frequency[a--] = tempFa1;
-//                }
-//            }
-//        }
-
+    private void sort() {
         for(int i = 1;i<this.frequency.length;i++) {
             int temp = this.frequency[i];
             for(int a = i;a>0;a--) {

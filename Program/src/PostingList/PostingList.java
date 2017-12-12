@@ -115,13 +115,13 @@ public class PostingList {
     public String print() {
         StringBuilder print = new StringBuilder();
         
-        print.append(this.nDokumen);
+        print.append(this.nDokumen).append(" ");
         for(int i = 0;i<this.postingListEntry.size();i++) {
             PostingListEntry temp = this.postingListEntry.get(i);
-            print.append(temp.getFrek()).append(temp.getJdoc());
+            print.append(temp.getFrek()).append(" ").append(temp.getJdoc()).append(" ");
             int[] docId = temp.getDocId();
             for(int j = 0;j<temp.getJdoc();j++) {
-                print.append(docId[j]);
+                print.append(docId[j]).append(" ");
             }
         }
         

@@ -29,7 +29,7 @@ public class TesterTries {
         Trie tri = new Trie();
         Term data = new Term(term, frekuensi, idDoc);
         tri.putString(data);
-        System.out.println("Frekuensi dari term " + term + " : " + Trie.getValue(term));
+        //System.out.println("Frekuensi dari term " + term + " : " + tri.getValue(term));
         //System.out.println("Id Dokumen dari term " + term + " : " + Trie.getDocId(term));
     }
 }

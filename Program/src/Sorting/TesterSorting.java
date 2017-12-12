@@ -20,7 +20,7 @@ public class TesterSorting {
         System.out.println(sort.print(id));
         System.out.println(sort.print(frekuensi));
         System.out.println();
-        sort.sort();
+        //sort.sort();
         System.out.println("Sesudah di sort :");
         System.out.println(sort.print(id));
         System.out.println(sort.print(frekuensi));

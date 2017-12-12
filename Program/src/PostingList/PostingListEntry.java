@@ -38,4 +38,8 @@ public class PostingListEntry {
     public void setDocId(int[] docId) {
         this.docId = docId;
     }
+    
+    public int similaritas(int nDokumen) {
+        return 0;
+    }
 }
