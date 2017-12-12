@@ -20,20 +20,6 @@ import java.util.ArrayList;
 public class Coba {
 
     public static void main(String[] args) throws IOException {
-        Parser parser = new Parser();
-        Splitting.Process[] temp = parser.parseDoc();
-        Trie trie = new Trie();
-        for (int i = 0; i < 1; i++) {
-            ArrayList<Term> term = temp[i].getArrayOfTerm();
-            for (int j = 0; j < term.size(); j++) {
-                trie.putString(term.get(j));
-            }
-        }
-
-        NodeTrie tempNode = trie.getRoot();
-        trie.process(tempNode);
-        String input = "date";
-        String dgap = trie.searchDgap(input);
-        System.out.println(dgap);
+        System.out.println(Math.cos(0.5));
     }
 }

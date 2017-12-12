@@ -1,6 +1,6 @@
 package PostingList;
 
-
+import Splitting.Dokumen;
 import java.util.ArrayList;
 
 /*
@@ -8,35 +8,37 @@ import java.util.ArrayList;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Rendra
  * @version 3 Desember 2017
- * 
+ *
  */
 public class PostingList {
+
     private int nDokumen;
     private ArrayList<PostingListEntry> postingListEntry;
     private String result;
-    
+    private int nFiles;
+
     public PostingList(String input) {
         this.postingListEntry = new ArrayList<>();
         postingList(input);
+        this.nFiles = Dokumen.readDocuments().length;
     }
-    
+
     public int getDokumen() {
         return this.nDokumen;
     }
-    
+
     public ArrayList<PostingListEntry> getPostingListEntry() {
         return this.postingListEntry;
     }
-    
+
     public String getResult() {
         return this.result;
     }
-    
+
     private void postingList(String input) {
         StringBuilder result = new StringBuilder();
         String[] temp = input.split(" ");
@@ -45,14 +47,14 @@ public class PostingList {
         i++;
         int nDokumen = this.nDokumen; //disimpan supaya nDokumen tidak hilang
         result.append(this.nDokumen).append(" ");
-        while(nDokumen != 0) {
+        while (nDokumen != 0) {
             int frek = Integer.parseInt(temp[i]);
             i++;
             int lengthDocId = Integer.parseInt(temp[i]);
             i++;
             result.append(frek).append(" ").append(lengthDocId).append(" ");
             int[] docId = new int[lengthDocId];
-            for(int j = 0;j<lengthDocId;j++) {
+            for (int j = 0; j < lengthDocId; j++) {
                 int tempDocId = Integer.parseInt(temp[i]);
                 result.append(tempDocId).append(" ");
                 docId[j] = tempDocId;
@@ -65,22 +67,21 @@ public class PostingList {
         this.result = result.toString();
         //return result.toString();
     }
-    
+
     public void dGap() {
         int length = this.postingListEntry.size();
-        for(int i = 0;i<length;i++) {
+        for (int i = 0; i < length; i++) {
             int[] postListEntry = this.postingListEntry.get(i).getDocId();
-            if(postListEntry.length == 2) {
+            if (postListEntry.length == 2) {
                 int temp1 = postListEntry[0];
                 int temp2 = postListEntry[1];
                 temp2 = temp2 - temp1;
                 postListEntry[1] = temp2;
                 this.postingListEntry.get(i).setDocId(postListEntry);
-            }
-            else if(postListEntry.length>2) {
-                for(int j = postListEntry.length-1;j>0;j--) {
+            } else if (postListEntry.length > 2) {
+                for (int j = postListEntry.length - 1; j > 0; j--) {
                     int temp1 = postListEntry[j];
-                    int temp2 = postListEntry[j-1];
+                    int temp2 = postListEntry[j - 1];
                     temp1 = temp1 - temp2;
                     postListEntry[j] = temp1;
                 }
@@ -88,43 +89,48 @@ public class PostingList {
             }
         }
     }
-    
+
     public void physicalPostingList() {
         int length = this.postingListEntry.size();
-        for(int i = 0;i<length;i++) {
+        for (int i = 0; i < length; i++) {
             int[] postListEntry = this.postingListEntry.get(i).getDocId();
-            if(postListEntry.length == 2) {
+            if (postListEntry.length == 2) {
                 int temp1 = postListEntry[0];
                 int temp2 = postListEntry[1];
                 temp2 = temp2 + temp1;
                 postListEntry[1] = temp2;
                 this.postingListEntry.get(i).setDocId(postListEntry);
-            }
-            else if(postListEntry.length>2) {
-                for(int j = 0;j<postListEntry.length-1;j++) {
+            } else if (postListEntry.length > 2) {
+                for (int j = 0; j < postListEntry.length - 1; j++) {
                     int temp1 = postListEntry[j];
-                    int temp2 = postListEntry[j+1];
+                    int temp2 = postListEntry[j + 1];
                     temp2 = temp1 + temp2;
-                    postListEntry[j+1] = temp2;
+                    postListEntry[j + 1] = temp2;
                 }
                 this.postingListEntry.get(i).setDocId(postListEntry);
             }
         }
     }
     
+    public double getIDF() {
+        double pembilang = Math.log10(this.nFiles/this.nDokumen);
+        double penyebut = Math.log10(2.0);
+        return pembilang/penyebut;
+    }
+
     public String print() {
         StringBuilder print = new StringBuilder();
-        
+
         print.append(this.nDokumen).append(" ");
-        for(int i = 0;i<this.postingListEntry.size();i++) {
+        for (int i = 0; i < this.postingListEntry.size(); i++) {
             PostingListEntry temp = this.postingListEntry.get(i);
             print.append(temp.getFrek()).append(" ").append(temp.getJdoc()).append(" ");
             int[] docId = temp.getDocId();
-            for(int j = 0;j<temp.getJdoc();j++) {
+            for (int j = 0; j < temp.getJdoc(); j++) {
                 print.append(docId[j]).append(" ");
             }
         }
-        
+
         return print.toString();
     }
 }

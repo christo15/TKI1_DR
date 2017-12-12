@@ -15,6 +15,8 @@ import java.io.File;
  * 
  */
 public class Dokumen {
+    private int nFiles;
+    
     public static File[] readDocuments() {
         File folder = new File("D:\\Data\\Rendra\\Kuliah\\Rendra\\Topik Khusus Informatika\\Tugas Akhir\\dataset reuters");
         File[] listOfFiles = folder.listFiles();

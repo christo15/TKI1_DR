@@ -39,7 +39,9 @@ public class PostingListEntry {
         this.docId = docId;
     }
     
-    public int similaritas(int nDokumen) {
-        return 0;
+    public double getTF() {
+        double pembilang = Math.log10(this.frek);
+        double penyebut = Math.log10(2.0);
+        return pembilang/penyebut;
     }
 }
