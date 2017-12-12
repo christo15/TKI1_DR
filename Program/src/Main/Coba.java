@@ -5,21 +5,18 @@
  */
 package Main;
 
+import PostingList.PostingList;
 import Sorting.Sorting;
-import Splitting.Parser;
-import Splitting.Term;
-import Trie.NodeTrie;
-import Trie.Trie;
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
- *
+ * Kelas yang hanya dipakai untuk coba2 method dan fungsi lain di java
  * @author Rendra_2
  */
 public class Coba {
 
     public static void main(String[] args) throws IOException {
-        System.out.println(Math.cos(0.5));
+        String temp = "guna";
+        System.out.println(temp.subSequence(0, 4));
     }
 }
