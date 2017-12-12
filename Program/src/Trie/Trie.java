@@ -18,22 +18,30 @@ public class Trie {
 
     public Trie() {
         this.root = new NodeTrie();
+        this.droot = new NodeTrieDgap();
     }
 
     public NodeTrie getRoot() {
         return this.root;
     }
+    
+    public NodeTrieDgap getDroot() {
+        return this.droot;
+    }
 
     public void putString(Term data) {
-        NodeTrie tempNode = root;
+        NodeTrie tempNode = this.root;
+        //NodeTrieDgap tempNodeDgap = this.droot;
         int length = data.getKata().length();
         String kata = data.getKata();
         for (int a = 0; a < length; a++) {
             String temp = kata.charAt(a) + "";
             int num = getNum(temp);
             tempNode = tempNode.getNext(num);
+            //tempNodeDgap = tempNodeDgap.getNext(num);
         }
         tempNode.setData(data);
+        //tempNodeDgap.setDgap("");
     }
 
     public ArrayList<Term> getValue(String term) {
@@ -45,9 +53,9 @@ public class Trie {
         }
         return tempNode.getData();
     }
-    
-    public void adv(NodeTrie input, NodeTrieDgap in, int index) {
-        ArrayList<Term> result = input.getData();
+
+    public void adv(NodeTrie input1, NodeTrieDgap input2) {
+        ArrayList<Term> result = input1.getData();
         int[] idDoc = new int[result.size()];
         int[] frekuensi = new int[result.size()];
         for (int i = 0; i < result.size(); i++) {
@@ -59,22 +67,24 @@ public class Trie {
         PostingList postList = new PostingList(inputPostList);
         postList.dGap();
         String dGap = postList.print();
-        in.setData(result.get(0).getKata(), dGap);
+        input2.setDgap(dGap);
     }
 
-    private void searchTrie(NodeTrie input, NodeTrieDgap in) {
+    private void searchTrie(NodeTrie input1, NodeTrieDgap input2) {
         for (int i = 0; i < 26; i++) {
-            NodeTrieDgap temp = in;
-            if (input.getNextNode(i) != null) {
-                searchTrie(input.getNextNode(i), temp.getNext(i));
-            } else {
-                adv(input, in, i);
+            if (input1.getNextNode(i) != null) {
+                searchTrie(input1.getNextNode(i), input2.getNext(i));
+            } else if(input1 != null) {
+                adv(input1, input2);
+            }
+            else {
+                
             }
         }
     }
 
-    public void process(NodeTrie input) {
-        this.searchTrie(input, this.droot);
+    public void process() {
+        this.searchTrie(this.root, this.droot);
     }
 
     public String searchDgap(String input) {
@@ -83,7 +93,12 @@ public class Trie {
             int x = this.getNum(input.charAt(i) + "");
             temp.getNextNode(x);
         }
-        return temp.getDgap();
+        if(temp != null) {
+            return temp.getDgap();
+        }
+        else {
+            return "";
+        }
     }
 
     public int getNum(String input) {

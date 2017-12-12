@@ -17,7 +17,7 @@ public class NodeTrieDgap {
     //objek akan dibuat dari kelas yang ada di Splitting
 
     private NodeTrieDgap[] trieNode;
-    private String term;
+    //private String term;
     private String dgap;
     //private int count = 0;
 
@@ -25,18 +25,22 @@ public class NodeTrieDgap {
         trieNode = new NodeTrieDgap[26];
     }
 
-    public void setData(String term ,String dgap) {
+//    public void setData(String term, String dgap) {
+//        this.dgap = dgap;
+//        this.term = term;
+//    }
+    
+    public void setDgap(String dgap) {
         this.dgap = dgap;
-        this.term = term;
     }
-
+    
     public String getDgap() {
         return this.dgap;
     }
     
-    public String getTerm() {
-        return this.term;
-    }
+//    public String getTerm() {
+//        return this.term;
+//    }
 
     public NodeTrieDgap getNext(int input) {
         if (trieNode[input] == null) {
